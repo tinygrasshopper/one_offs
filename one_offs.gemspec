@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.version     = OneOffs::VERSION
   s.authors     = ["Jatin Naik"]
   s.email       = ["jsnaik@gmail.com"]
-  s.homepage    = ""
+  s.homepage    = "http://github.com/tinygrasshopper/one_offs"
   s.summary     = "Track and manage your one off scripts"
   s.description = "Track and manage your one off scripts with rake"
 
