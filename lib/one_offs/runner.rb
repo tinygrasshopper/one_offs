@@ -9,11 +9,16 @@ module OneOffs
 
       private
       def execute(file)
-        puts "Running #{one_off}"
-        require one_off
         one_off_name = File.basename(one_off, ".rb")
-        one_off_class = one_off_name.scan(/\d_(.*)/).to_s.classify
-        Object.const_get(one_off_class).send(:process)
+
+        if(Tracker.complete?(one_off_name))
+          puts "Running #{one_off}"
+          require one_off
+          one_off_class = one_off_name.scan(/\d_(.*)/).to_s.classify
+          Object.const_get(one_off_class).send(:process)
+
+          Tracker.complete(one_off_name)
+        end
       end
     end
   end

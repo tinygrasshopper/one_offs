@@ -3,4 +3,10 @@ namespace :one_offs do
   task :run  => :environment do
     Runner.run
   end
+
+
+  desc "Create a one off tracker table"
+  task :generate_tracker_table do
+    `script/generate OneOffTracker name:string`
+  end
 end
