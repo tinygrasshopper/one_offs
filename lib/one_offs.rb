@@ -1,4 +1,2 @@
+require "one_offs"
 require "one_offs/version"
-
-module OneOffs
-end
