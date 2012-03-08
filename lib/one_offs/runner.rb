@@ -1,3 +1,5 @@
+require 'one_offs/tracker'
+
 module OneOffs
   class Runner
     class << self
@@ -8,7 +10,7 @@ module OneOffs
       end
 
       private
-      def execute(file)
+      def execute(one_off)
         one_off_name = File.basename(one_off, ".rb")
 
         if(Tracker.complete?(one_off_name))

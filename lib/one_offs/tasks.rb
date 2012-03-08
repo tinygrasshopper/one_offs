@@ -7,6 +7,6 @@ namespace :one_offs do
 
   desc "Create a one off tracker table"
   task :generate_tracker_table do
-    `script/generate OneOffTracker name:string`
+    `script/generate migration CreateOneOffTracker name:string`
   end
 end

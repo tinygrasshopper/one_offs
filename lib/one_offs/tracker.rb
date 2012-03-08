@@ -1,6 +1,8 @@
+require 'active_record'
+
 module OneOffs
   class Tracker < ActiveRecord::Base
-    set_table_name "OneOffTracker"
+    set_table_name "one_off_tracker"
 
     class << self
       def complete?(name)
