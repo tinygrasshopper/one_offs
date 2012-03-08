@@ -13,7 +13,7 @@ module OneOffs
       def execute(one_off)
         one_off_name = File.basename(one_off, ".rb")
 
-        if(Tracker.complete?(one_off_name))
+        if(!Tracker.complete?(one_off_name))
           puts "Running #{one_off}"
           require one_off
           one_off_class = one_off_name.scan(/\d_(.*)/).to_s.classify
