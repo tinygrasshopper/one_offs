@@ -21,7 +21,12 @@ Or install it yourself as:
 
 ## Usage
 
-After installing the gem setup a tracker table.
+After installing the gem, In your Rakefile (/Rakefile) add the following line
+
+    require 'one_offs/tasks'
+
+
+And setup a tracker table.
 
 
     rake one_offs:generate_tracker_table
