@@ -26,12 +26,26 @@ After installing the gem, In your Rakefile (/Rakefile) add the following line
     require 'one_offs/tasks'
 
 
-And setup a tracker table.
-
+And setup a tracker table (creates migration).
 
     rake one_offs:generate_tracker_table
 
+OR using SQL query if you want to avoid a migration (Useful if you need to setup one off tasks before db:migrate).
+
+    rake one_offs:create_tracker_table_using_sql
+
 Add scripts to `lib/one_offs/`
+  * File name should be <code>\<number\>_class_name_inside_file.rb</code> (Rails convention for file name to class name with the order number before that)
+
+    Example:
+
+        File: 1_hello_world.rb
+        Contents:
+            class HelloWorld
+                def self.process
+                puts("You may write your code in this process method").
+            end
+        end
 
 To run pending one_off scripts.
 
