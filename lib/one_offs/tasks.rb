@@ -28,6 +28,7 @@ namespace :one_offs do
 
     File.open("#{spec_directory}/#{time}_#{filename}_spec.rb", "w") do |file|
       contents = <<~CONTENT
+      require 'rails_helper'
       require 'one_offs/#{time}_#{filename}'
 
       RSpec.describe #{filename.camelize} do
