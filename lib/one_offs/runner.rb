@@ -16,7 +16,7 @@ module OneOffs
         if(!Tracker.complete?(one_off_name))
           puts "Running #{one_off}"
           require one_off
-          one_off_class = one_off_name.scan(/\d_(.*)/).flatten.first.classify
+          one_off_class = one_off_name.scan(/\d_(.*)/).flatten.first.camelize
           Object.const_get(one_off_class).send(:process)
 
           Tracker.complete(one_off_name)
