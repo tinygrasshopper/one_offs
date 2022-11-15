@@ -16,7 +16,7 @@ module OneOffs
         one_off_name = File.basename(one_off, ".rb")
 
         if(!Tracker.complete?(one_off_name))
-          puts "Pending one-off need to be run: #{one_off}. Run using `rake one_offs:run` "
+          puts "Pending one-off need to be run: #{one_off_name}. Run using `rake one_offs:run` "
         end
       end
 

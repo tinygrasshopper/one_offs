@@ -59,7 +59,9 @@ namespace :one_offs do
     filepath = Rails.root.join('config', 'initializers', 'one_offs.rb')
 
     File.open(filepath, "w") do |file|
-      contents = "if Rails.env.development?\n"\
+      contents = "require 'one_offs/configuration'\n"\
+                 "\n"\
+                 "if Rails.env.development?\n"\
                  "  OneOffs::Configuration.check_for_pending\n"\
                  "end\n"\
 
