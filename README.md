@@ -34,6 +34,11 @@ OR using SQL query if you want to avoid a migration (Useful if you need to setup
 
     rake one_offs:create_tracker_table_using_sql
 
+
+To turn on notifications for pending one-offs in the development environment (optional).
+
+    rake one_offs:turn_on_pending_notification
+
 Add scripts to `lib/one_offs/`
   * File name should be <code>\<number\>_class_name_inside_file.rb</code> (Rails convention for file name to class name with the order number before that)
 
