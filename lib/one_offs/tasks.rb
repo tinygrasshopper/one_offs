@@ -60,10 +60,10 @@ namespace :one_offs do
 
     File.open(filepath, "w") do |file|
       contents = "require 'one_offs/configuration'\n"\
-                 "\n"\
-                 "if Rails.env.development?\n"\
-                 "  OneOffs::Configuration.check_for_pending\n"\
-                 "end\n"\
+                  "\n"\
+                  "if Rails.env.development?\n"\
+                  "  OneOffs::Configuration.check_for_pending\n"\
+                  "end\n"\
 
       file.puts(contents)
     end

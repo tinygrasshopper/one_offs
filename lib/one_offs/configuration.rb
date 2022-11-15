@@ -19,7 +19,6 @@ module OneOffs
           puts "Pending one-off need to be run: #{one_off_name}. Run using `rake one_offs:run` "
         end
       end
-
     end
   end
 end
