@@ -1,4 +1,6 @@
 require 'one_offs/runner'
+require 'one_offs/configuration'
+
 namespace :one_offs do
   desc "Run all the one-off scripts"
   task :run  => :environment do
@@ -28,16 +30,16 @@ namespace :one_offs do
 
     File.open("#{spec_directory}/#{time}_#{filename}_spec.rb", "w") do |file|
       contents = <<~CONTENT
-      require 'rails_helper'
-      require 'one_offs/#{time}_#{filename}'
+        require 'rails_helper'
+        require 'one_offs/#{time}_#{filename}'
 
-      RSpec.describe #{filename.camelize} do
-        before { described_class.process }
+        RSpec.describe #{filename.camelize} do
+          before { described_class.process }
 
-        it 'CHANGEME' do
-          expect(1).to eq(2)
+          it 'CHANGEME' do
+            expect(1).to eq(2)
+          end
         end
-      end
 
       CONTENT
       file.puts(contents)
@@ -50,6 +52,21 @@ namespace :one_offs do
   desc "Create a one off tracker table"
   task :generate_tracker_table do
     `rails generate migration CreateOneOffTracker name:string`
+  end
+
+  desc "Turn on pending one_offs notification in development environment"
+  task :turn_on_pending_notification do
+    filepath = Rails.root.join('config', 'initializers', 'one_offs.rb')
+
+    File.open(filepath, "w") do |file|
+      contents = "require 'one_offs/configuration'\n"\
+                 "\n"\
+                 "if Rails.env.development?\n"\
+                 "  OneOffs::Configuration.check_for_pending\n"\
+                 "end\n"\
+
+      file.puts(contents)
+    end
   end
 
   desc 'Create one off tracker table using SQL instead of migration'
